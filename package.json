@@ -1,0 +1,11 @@
+{
+	"name": "yoseme",
+	"version": "0.0.0",
+	"description": "playing the yose challenge",
+	"dependencies": {
+	"socket.io": "latest",
+	"express": "latest",
+	"jade": "latest"
+	},
+	"author": "christian lapointe"
+}
