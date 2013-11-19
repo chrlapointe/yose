@@ -6,7 +6,8 @@ var json_result = {"alive" : true };
 
 app.get("/ping" , function(req, res){
 	res.writeHead(200, { 'Content Type': 'application/json'});
-	res.end(JSON.stringify(json_result));
+	res.write(JSON.stringify(json_result));
+	res.end();
 	});
       
 app.listen(process.env.PORT || port);
