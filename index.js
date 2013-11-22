@@ -4,8 +4,8 @@ var port = 3700;
  
 var json_result = {"alive" : true };
 
-app.get("/get" , function(req, res){
-	res.send("hello yose");
+app.get("/" , function(req, res){
+	res.sendfile('public/index.html');
 	});
       
 app.get("/ping" , function(req, res){
