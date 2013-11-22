@@ -30,7 +30,7 @@ function primeFactors(number) {
 	if(isNumber(number)) {
 		result.decomposition = buildArraysOfTwos(number);
 	} else {
-		result.decomposition = "not a number";
+		result.error = "not a number";
 	}
 	return result;
 }
