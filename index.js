@@ -14,21 +14,48 @@ function write_json(res, json) {
 	res.end();
 }
 
-function buildArraysOfTwos(number) {
-	var result = [];
-	var twos = Math.log(number) / Math.LN2;
-
-	for (var i=0; i < twos; i++) {
-		result.push(2);
+function getPrimes(max) {
+	var sieve = [], i, j, primes = [];
+	for (i = 2; i <= max; ++i) {
+		if (!sieve[i]) {
+			// i has not been marked -- it is prime
+			primes.push(i);
+			for (j = i << 1; j <= max; j += i) {
+				sieve[j] = true;
+			}
+		}
 	}
-	return result;
+	console.log("primes up to " + max + " are: " + primes);
+	return primes;
 }
+
+function decompositions(number) {
+	var primes = getPrimes(Math.sqrt(number));
+    var results = [];
+    var reste = number;
+    var i = 0;
+
+    while (reste > 1 && i < primes.length) {
+        while ((reste % primes[i]) == 0) {
+            reste = reste / primes[i];
+			results.push(primes[i]);
+        }
+        i++;
+    }
+
+    if (reste != 1) {
+        results.push(reste);
+    }
+
+    return results;
+}
+
 
 function primeFactors(number) {
 	var result = {};
 	result.number = number;
 	if(isNumber(number)) {
-		result.decomposition = buildArraysOfTwos(number);
+		result.decomposition = decompositions(number);
 	} else {
 		result.error = "not a number";
 	}
