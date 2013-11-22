@@ -54,11 +54,17 @@ function decompositions(number) {
 function primeFactors(number) {
 	var result = {};
 	result.number = number;
-	if(isNumber(number)) {
-		result.decomposition = decompositions(number);
-	} else {
+
+	if(!isNumber(number)) {
 		result.error = "not a number";
 	}
+	else if (number > 1e6) {
+		result.error = "too big number (>1e6)";
+	}
+	else {
+		result.decomposition = decompositions(number);
+	}
+
 	return result;
 }
 
