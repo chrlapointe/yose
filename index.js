@@ -4,13 +4,17 @@ var port = 3700;
  
 var ping_result = {"alive" : true };
 
-var write_json = function(res, json) {
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function write_json(res, json) {
 	res.writeHead(200, { 'Content-Type': 'application/json'});
 	res.write(JSON.stringify(json));
 	res.end();
 }
 
-var buildArraysOfTwos = function(number) {
+function buildArraysOfTwos(number) {
 	var result = [];
 	var twos = Math.log(number) / Math.LN2;
 
@@ -20,11 +24,14 @@ var buildArraysOfTwos = function(number) {
 	return result;
 }
 
-var primeFactors = function(number) {
+function primeFactors(number) {
 	var result = {};
 	result.number = number;
-	result.decomposition = buildArraysOfTwos(number);
-
+	if(isNumber(number)) {
+		result.decomposition = buildArraysOfTwos(number);
+	} else {
+		result.decomposition = "not a number";
+	}
 	return result;
 }
 
@@ -37,11 +44,7 @@ app.get("/ping" , function(req, res){
 	});
 
 app.get("/primeFactors", function(req, res){
-	if(req.query.number) {
-		write_json(res, primeFactors(req.query.number));
-	} else {
-		res.send("primeFactor needs number parameter");
-	}
+	write_json(res, primeFactors(req.query.number));
 	});
 
 app.listen(process.env.PORT || port);
