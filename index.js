@@ -53,6 +53,19 @@ function primeFactors(number) {
 	return result;
 }
 
+function allPrimeFactors(number) {
+	if (Array.isArray(number)) {
+		var results = [];
+		for (var i=0; i < number.length; i++) {
+			results.push(primeFactors(number[i]));
+		}
+		return results;
+	}
+	else {
+		return primeFactors(number);
+	}
+}
+
 app.get("/" , function(req, res){
 	res.sendfile('public/index.html');
 	});
@@ -62,7 +75,7 @@ app.get("/ping" , function(req, res){
 	});
 
 app.get("/primeFactors", function(req, res){
-	write_json(res, primeFactors(req.query.number));
+	write_json(res, allPrimeFactors(req.query.number));
 	});
 
 app.listen(process.env.PORT || port);
