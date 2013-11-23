@@ -1,11 +1,18 @@
 {
 	"name": "yoseme",
-	"version": "0.0.0",
-	"description": "playing the yose challenge",
+	"version": "0.1.0",
+	"description": "playing the yose challenge at yose.herokuapp.com",
 	"dependencies": {
-	"socket.io": "latest",
-	"express": "latest",
-	"jade": "latest"
+		"socket.io": "latest",
+		"express": "latest",
+		"jade": "latest"
+	},
+	"devDependencies": {
+		"request": "latest",
+		"jasmine-node": "latest"
+	},
+	"scripts": {
+		"test": "jasmine-node spec"
 	},
 	"author": "christian lapointe"
 }
