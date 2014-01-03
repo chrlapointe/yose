@@ -11,7 +11,11 @@ server.get("/ping", function(req, res){
 	});
 
 server.get("/primeFactors", function(req, res){
-	require('./challenge.prime/prime.endpoint')(req, res);
+	require('./challenge.prime/prime.endpoint').prime(req, res);
+	});
+
+server.get("/primeFactors/ui", function(req, res){
+	require('./challenge.prime/prime.endpoint').ui(req, res);
 	});
 
 module.exports = server;

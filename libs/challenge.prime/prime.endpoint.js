@@ -57,9 +57,14 @@ function allPrimeFactors(number) {
 	}
 }
 
-var endpoint = function(req, res) {
+var endpointPrime = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
 	res.send(allPrimeFactors(req.query.number));
 }
 
-module.exports = endpoint;
+var endpointUI = function(req, res) {
+	res.sendfile('./libs/challenge.prime/ui.html');
+}
+
+module.exports.prime = endpointPrime;
+module.exports.ui = endpointUI;
