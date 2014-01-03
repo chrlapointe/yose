@@ -24,7 +24,7 @@ describe('Passing the world 1 challenge', function() {
    
     it('landing page contains a contact information link with a specific id', function(done) {
         zombie.visit('http://localhost:7000/', function(error, browser, status) {
-            expect(browser.querySelector("a#contact-me-link")).not.toBe(null);
+            expect(browser.querySelector("a#contact-me-link")).not.toBeNull();
             done(); 
         });
     });
