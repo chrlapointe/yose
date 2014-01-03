@@ -9,7 +9,8 @@
 	},
 	"devDependencies": {
 		"request": "latest",
-		"jasmine-node": "latest"
+		"jasmine-node": "latest",
+        "zombie": "latest"
 	},
 	"scripts": {
 		"test": "jasmine-node spec"
