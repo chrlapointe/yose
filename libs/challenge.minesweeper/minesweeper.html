@@ -28,7 +28,7 @@
 			var tr = grid.appendChild(document.createElement('tr'));
 			for (var c=1;c<=cols;++c){
 				var cell = tr.appendChild(document.createElement('td'));
-				cell.id = "cell-"+r+"-"+c;
+				cell.id = "cell-"+r+"x"+c;
 				cell.innerHTML = ++i;
 				cell.addEventListener('click',(function(el,r,c,i){
 					return function(){
